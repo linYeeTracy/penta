@@ -1,50 +1,57 @@
 var express = require('express');
-var handlebars = require('express-handlebars').create({
-    // extname: '.hbs',
-    defaultLayout: 'main'});
+var static = require('express-static');
+var mysql = require('mysql');
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
+var consolidate = require('consolidate');
+var ejs = require('ejs');
+var route = require('express-route');
 
-var fortune = require('./lib/fortune');
-// var weather = require('./lib/weather');
 
-// console.log(weather.getWeather());
-
-
+const multerObj = multer({dest: './static/upload'});
+  
 var app = express();
-
-// 设置handlebars模板引擎
-app.engine('handlebars', handlebars.engine);
-app.set('view engine', 'handlebars');
-
 app.set('port', process.env.PORT || 3000);
 
-console.log(__dirname);
-app.use(express.static(__dirname + '/public'));
+// 1.获取请求数据
+// get自带，主要处理post
+app.use(multerObj.any());
 
-app.use(function(req, res, next) {
-    if(!res.locals.partials) res.locals.partials = {};
-    res.locals.partials.weather = {
-        locations: 'xx'
-    };
+// 2.cookie session
+app.use(cookieParser());
 
-    next();
-})
-
-app.get('/', function(req, res) {
-    res.render('home');
-})
-
-app.get('/headers', function(req, res) {
-    res.set('Content-type', 'text/plain');
-    var s = '';
-    for(var name in req.headers) {
-        s += name + ':' + req.headers[name] + '\n';    
+// 防止污染全局变量
+(function() {
+    var sessionKeys = [];
+    for (var i = 0; i < 100000; i++) {
+        sessionKeys[i] = 'a_' + Math.random(); 
     }
-    res.send(s);
-})
 
-app.get('/about', function(req, res) {
-    res.render('about', {fortune: fortune.getFortune()});
-})
+    app.use(cookieSession({
+        name: 'session_id',
+        keys: sessionKeys,
+        max: 20*60*1000
+    }))
+})();
+
+
+// 3.模板
+app.engine('html', consolidate.ejs); 
+app.set('views', 'template');
+app.set('view engine', 'html');
+// 4.route
+
+// app.use('/', require('./routes/web/web.js')());
+app.use('/admin', require('./routes/admin/admin.js')());
+
+// 5.default:static
+
+app.use(static('./static'));
+
+// 设置handlebars模板引擎
+
 
 // 404 catch-all
 app.use(function(req, res) {
