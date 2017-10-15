@@ -1,5 +1,6 @@
 var express = require('express');
 var static = require('express-static');
+var path = require('path');
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var multer = require('multer');
@@ -43,14 +44,18 @@ app.set('views', 'template');
 app.set('view engine', 'html');
 // 4.route
 
-// app.use('/', require('./routes/web/web.js')());
+// app.get('/', function(req, res, next) {
+//     res.render('penta.ejs', {}).end();
+// });
+
+
+app.use('/', require('./routes/web/index.js')());
 app.use('/admin', require('./routes/admin/admin.js')());
 
 // 5.default:static
 
-app.use(static('./static'));
+app.use(express.static(path.join(__dirname, 'static')));
 
-// 设置handlebars模板引擎
 
 
 // 404 catch-all

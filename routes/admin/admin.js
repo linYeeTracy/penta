@@ -1,5 +1,5 @@
 const express = require('express');
-const common = require('../lib/common.js');
+const common = require('../../lib/common.js');
 
 module.exports = function() {
     const router = express.Router();
