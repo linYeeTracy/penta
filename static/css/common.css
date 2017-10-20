@@ -1,0 +1,14 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  color: #fff;
+  font-family: 微软雅黑,Hiragino Sans GB; }
+
+img {
+  border: none; }
+
+/*.nav .menu .search_b{margin:33px;float:right;cursor:pointer;}*/
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #ccc; }
