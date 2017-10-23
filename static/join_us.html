@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>smartroadiot</title>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/nav.css">
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/add.css">
+
+	</head>
+	<body>
+		<img style="display:none" src="./public/logo.jpg">
+
+		<div id="nav" class="nav new white" style="top: 0px;">
+			<div class="nav_c">
+				<a class="logo-wrap" href="/" target="_blank">
+					<img style="width:50px;height:50px" src="./img/smartroad_logo.jpg" class="logo">
+					<span class="company-name" href="/" target="_blank">南京慧道通物联网有限公司</span>
+				</a>
+				<div class="menu">
+					<a href="/home.html#head" class="menu_item head">首页<span></span></a>
+					<a href="/home.html#product_dis" class="menu_item product_dis" id="ndomain">产品展示<span></span></a>
+					<a href="/home.html#about_us" class="menu_item about_us" id="nabout">关于我们<span></span></a>
+					<a href="#" class="menu_item">联系我们<span></span></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="f_contact" style="display: block;">
+			<div class="ph">
+					<p>免费咨询电话：</p>
+					<span>176-2052-8862</span>
+			</div>
+			<div class="c" align="center" id="ph">
+				<img src="./img/phone_g.png" id="phone">
+			</div>
+		</div>
+
+		<div class="contact" align="center">
+			<div class="contact_c">
+				<i class="icon-lianxi"></i>
+				<h1> CONTACT US</h1>
+				<div class="line"></div>
+				<div class="info" align="left">
+					<h2>联系方式</h2>
+					<p><i class="icon-dizhi"></i>南京市 白下科技园</p>
+					<p><i class="icon-mail"></i>494787963@qq.com</p>
+					<p><i class="icon-dianhua"></i>176-0252-8862</p>
+					<p><i class="icon-diqiu"></i>www.smartroadiot.com</p>
+					<div class="share" id="weixin"><i class="icon-weixin"></i></div>
+					<a href="" target="_blank"><div class="share" id="wangwang"><i class="icon-aliwangwang"></i></div></a>
+					<a href="" target="_blank"><div class="share" id="weibo"><i class="icon-weibo"></i></div></a>
+				</div>
+				<div class="leavemes" align="left">
+					<h2>留言信息</h2>
+					<form method="post"  target="contact_us">
+						<input type="text" placeholder="姓名" name="name" id="name">
+						<input type="text" placeholder="邮箱" name="email" id="email">
+						<textarea name="content" placeholder="留言内容" id="content"></textarea>
+						<button>提交留言</button>
+					</form>
+				</div>
+			</div>
+		</div>	
+			
+		<div class="footer" align="center">
+			<div class="ft">
+				<p style="color:#a0a0a0">Copyright©2008-2014</p>
+				<!-- <script language="javaScript" src="./蒜泥科技_files/610132610132000022014012100140.js.下载"></script><a target="_blank" href="http://wljg.xags.gov.cn/bscx.do?method=lzxx&amp;id=610132610132000022014012100140"><img src="./蒜泥科技_files/i_lo2.gif" border="0"></a> -->
+			</div>
+		</div>
+
+		<div id="dialog" class="dialog">
+			<div class="dialog-overlay"></div>
+			<div class="dialog-content">
+				<div class="morph-shape">
+					<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 560 280" preserveAspectRatio="none">
+						<rect x="3" y="3" fill="none" width="556" height="276"></rect>
+					</svg>
+				</div>
+				<div class="dialog-inner">
+					<h2>提交成功</h2>
+					<div><button class="action" data-dialog-close="">关闭</button></div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/index.js"></script>
+		<script>
+			$('.nav a.menu_item').eq(3).addClass('current').siblings().removeClass('current');
+		</script>
+	</body>
+</html>

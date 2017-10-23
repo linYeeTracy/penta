@@ -1,143 +1,210 @@
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js canvas - particles - waves</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <link rel="stylesheet" href="css/common.css">
-        <link rel="stylesheet" href="css/home.css">
-        
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>smartroadiot</title>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/nav.css">
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/add.css">
+
 	</head>
 	<body>
-        <div class="home">
-            <div class="home-cont">
-                <h1>
-                    <!-- <img src="img/smartroadiot.jpg" class="img-logo">  -->
-                    <p class="en-name">smartroadiot</p>
-                    <!-- <p class="ch-name">南京慧道通物联网有限公司</p> -->
-                </h1> 
-                <!-- <h2 class="business">智慧交通解决方案</h2>  -->
-                <div class="list">
-                    <a href="/index.html" class="">首页</a> 
-                    <a href="/index.html" class="">产品展示</a> 
-                    <a href="/index.html" class="">关于我们</a> 
-                    <a href="/index.html#aboutus" class="">联系我们</a> 
-                </div>
-            </div>
-        </div>
-        <div class="home-animate">
-        </div>
-        <script src="js/jquery-3.2.1.min.js"></script>
-		<script src="js/libs/three.js"></script> 
-		<script src="js/libs/Projector.js"></script>
-		<script src="js/libs/CanvasRenderer.js"></script>
-		<script src="js/libs/stats.min.js"></script>
+		<div id="nav" class="nav new white" style="top: 0px;">
+			<div class="nav_c">
+				<a class="logo-wrap" href="#" target="_blank">
+					<img style="width:50px;height:50px" src="./img/smartroad_logo.jpg" class="logo">
+					<span class="company-name" href="/" target="_blank">南京慧道通物联网有限公司</span>
+				</a>
+				<div class="menu">
+					<a href="#head" class="menu_item">首页<span></span></a>
+					<a href="#product_dis" class="menu_item product_dis" id="ndomain">产品展示<span></span></a>
+					<a href="#about_us" class="menu_item about_us" id="nabout">关于我们<span></span></a>					
+					<a href="/join_us.html" class="menu_item contact_us" target="_blank">联系我们<span></span></a>
+				</div>
+			</div>
+		</div>
 
-        <script>
-			var SCREEN_WIDTH = window.innerWidth,
-			SCREEN_HEIGHT = window.innerHeight,
-			mouseX = 0, mouseY = 0,
-			windowHalfX = window.innerWidth / 2,
-			windowHalfY = window.innerHeight / 2,
-			SEPARATION = 200,
-			AMOUNTX = 10,
-			AMOUNTY = 10,
-			camera, scene, renderer;
-			init();
-			animate();
-			function init() {
-				var container, separation = 100, amountX = 50, amountY = 50,
-				particles, particle;
-				container = $('.home-animate')[0];
-				// document.body.appendChild(container);
-				camera = new THREE.PerspectiveCamera( 75, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
-				camera.position.z = 1000;
-				scene = new THREE.Scene();
-				renderer = new THREE.CanvasRenderer();
-				renderer.setPixelRatio( window.devicePixelRatio );
-                renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
-                // renderer.setClearColor(0x2d4366);
-				container.appendChild( renderer.domElement );
-				// particles
-				var PI2 = Math.PI * 2;
-				var material = new THREE.SpriteCanvasMaterial( {
-					color: 0xe45769,
-					program: function ( context ) {
-						context.beginPath();
-						context.arc( 0, 0, 0.5, 0, PI2, true );
-						context.fill();
-					}
-				} );
-				for ( var i = 0; i < 1000; i ++ ) {
-					particle = new THREE.Sprite( material );
-					particle.position.x = Math.random() * 2 - 1;
-					particle.position.y = Math.random() * 2 - 1;
-					particle.position.z = Math.random() * 2 - 1;
-					particle.position.normalize();
-					particle.position.multiplyScalar( Math.random() * 10 + 450 );
-					particle.scale.multiplyScalar( 2 );
-					scene.add( particle );
-				}
-				// lines
-				for (var i = 0; i < 300; i++) {
-					var geometry = new THREE.Geometry();
-					var vertex = new THREE.Vector3( Math.random() * 2 - 1, Math.random() * 2 - 1, Math.random() * 2 - 1 );
-					vertex.normalize();
-					vertex.multiplyScalar( 450 );
-					geometry.vertices.push( vertex );
-					var vertex2 = vertex.clone();
-					vertex2.multiplyScalar( Math.random() * 0.3 + 1 );
-					geometry.vertices.push( vertex2 );
-					var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0xe45769, opacity: Math.random() } ) );
-					scene.add( line );
-				}
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
-				//
-				window.addEventListener( 'resize', onWindowResize, false );
-			}
-			function onWindowResize() {
-				windowHalfX = window.innerWidth / 2;
-				windowHalfY = window.innerHeight / 2;
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-				renderer.setSize( window.innerWidth, window.innerHeight );
-			}
-			//
-			function onDocumentMouseMove(event) {
-				mouseX = event.clientX - windowHalfX;
-				mouseY = event.clientY - windowHalfY;
-			}
-			function onDocumentTouchStart( event ) {
-				if ( event.touches.length > 1 ) {
-					event.preventDefault();
-					mouseX = event.touches[ 0 ].pageX - windowHalfX;
-					mouseY = event.touches[ 0 ].pageY - windowHalfY;
-				}
-			}
-			function onDocumentTouchMove( event ) {
-				if ( event.touches.length == 1 ) {
-					event.preventDefault();
-					mouseX = event.touches[ 0 ].pageX - windowHalfX;
-					mouseY = event.touches[ 0 ].pageY - windowHalfY;
-				}
-			}
-			//
-			function animate() {
-				requestAnimationFrame( animate );
-				render();
-			}
-			function render() {
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
-				camera.lookAt( scene.position );
-				renderer.render( scene, camera );
-			}
+		<div class="f_contact" style="display: block;">
+			<div class="ph">
+					<p>免费咨询电话：</p>
+					<span>176-2052-8862</span>
+			</div>
+			<div class="c" align="center" id="ph">
+				<img src="./img/phone_g.png" id="phone">
+			</div>
+		</div>
 
-		
+		<!-- <div class="welcome" align="center" style="display: none;">
+			<div class="bg"></div>
+			<div class="bakcdot">
+				<div class="blue" style="transform: rotateX(-11.0221deg) rotateY(-20.1261deg) rotateZ(-69.45deg);"></div>
+				<div class="green" style="transform: rotateX(-11.0221deg) rotateY(-20.1261deg) rotateZ(138.9deg); top: -5.51106px; left: 10.0631px;"></div>
+				<div class="sanjiao" style="transform: rotateX(-11.0221deg) rotateY(-20.1261deg); top: -4.40885px; left: 8.05045px;"></div>
+				<div class="gray" style="transform: rotateX(-11.0221deg) rotateY(-20.1261deg) rotateZ(-208.35deg); top: -3.67404px; left: 6.70871px;"></div>
+				<div class="logo" style="transform: rotateX(-11.0221deg) rotateY(-20.1261deg); top: -7.34809px; left: 13.4174px;"></div>
+				<div class="shubiao">
+					<p>开启智慧交通</p>
+					<div class="gunlun"></div>
+				</div>
+				<div class="title">
+					<div class="border">
+						<div class="lt"></div>
+						<div class="rt"></div>
+						<div class="lb"></div>
+						<div class="rb"></div>
+						<i class="icon-suannikeji"></i>
+						<p style="opacity: 1;">xxxxxxxxxxxxxx</p>
+					</div>
+				</div>
+			</div>
+		</div> -->
 
-		
-        </script>
+		<a name="head" class="anchor"></a>
+		<div class="banner">
+			<a href="" target="blank">
+				<div style="background: url(&quot;http://bbs.suanier.com/data/attachment/portal/201707/04/160436qde8zlfodtwdoldc.jpg&quot;) center center no-repeat rgb(56, 58, 57); opacity: 1; z-index: 1;"></div>
+			</a>
+			<a href="" target="blank">
+				<div style="background:url(http://bbs.suanier.com/data/attachment/portal/201509/30/214044b8yid9l982ddzuwe.jpg) #383a39 no-repeat center">
+				</div>
+			</a>
+			
+			<a href="" target="blank">
+				<div style="background:url(http://bbs.suanier.com/data/attachment/portal/201502/11/164809loaw6qojztnucuu3.jpg) #383a39 no-repeat center">
+				</div>
+			</a>
+	
+			<div class="left">
+				<img src="./img/left.svg">
+			</div>
+			<div class="right">
+				<img src="./img/left.svg">
+			</div>
+		</div>
+
+		<!-- 产品展示 -->
+		<a href="" name="product_dis" class="anchor"></a>
+		<div class="domain" id="here">
+			<div class="wrap">
+				<div class="title2"><h2><span>产品展示</span>Product display</h2></div>
+				<ul class="layoutlist">
+					<li>
+						<a href="javascript:;" target="_blank">
+							<div class="pic"><img src="./img/d1.jpg"></div>
+							<div class="txt"><h2>e驾游</h2><p></p></div>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">
+							<div class="pic"><img src="./img/d2.jpg"></div>
+							<div class="txt"><h2>镇江</h2><p></p></div>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<div class="pic"><img src="./img/d3.jpg"></div>
+							<div class="txt"><h2>电商平台</h2><p></p></div>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<div class="pic"><img src="./img/d4.jpg"></div>
+							<div class="txt"><h2>产业2</h2><p>杨帅杨帅杨帅杨帅杨帅杨帅杨帅杨帅杨帅杨帅杨帅</p></div>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">
+							<div class="pic"><img src="./img/d5.jpg"></div>
+							<div class="txt"><h2>产业2</h2><p>杨帅杨帅杨帅杨帅杨帅杨帅杨帅杨帅杨帅杨帅杨帅</p></div>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;" target="_blank">
+							<div class="pic"><img src="./img/d6.jpg"></div>
+							<div class="txt"><h2>产业2</h2><p>杨帅杨帅杨帅杨帅杨帅杨帅杨帅杨帅杨帅杨帅杨帅</p></div>
+						</a>
+					</li>        
+				</ul>     
+			</div>
+		</div>
+
+		<!-- <div class="who" align="center">
+			<div class="who_c">
+				<a href="about.php"><h1>WHO WE ARE</h1></a>
+				<div class="line"></div>
+				<p class="whowe">
+					xxxxxxxxxxxxxxxxxxxxx</br>
+					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</br>
+					xxxxxxxxxxxxxxxxxxxxxx
+				</p>
+				<span class="change">改变从这里开始！</span>
+			</div>
+		</div>	 -->
+		<!-- 关于我们 -->
+		<a href="" name="about_us" class="anchor"></a>
+		<div class="about">
+			<div class="wrap">
+				<div class="title2"><h2><span>关于我们</span>About us</h2></div>
+				<ul class="iaboutlist">    
+					<li>
+						<a href="profile.php">
+							<img src="img/a1.jpg">
+							<h2>企业简介</h2>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="./img/a2.jpg">
+							<h2>企业理念</h2>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="./img/a3.jpg">
+							<h2>企业文化</h2>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<img src="./img/a4.jpg">
+							<h2>企业荣誉</h2>
+						</a>
+					</li>
+				</ul>	
+													
+			</div>
+		</div>
+
+
+
+		<div class="footer" align="center">
+			<div class="ft">
+				<p style="color:#a0a0a0">Copyright</p>
+				<!-- <script language="javaScript" src="./_files/610132610132000022014012100140.js.下载"></script><a target="_blank" href="http://wljg.xags.gov.cn/bscx.do?method=lzxx&amp;id=610132610132000022014012100140"><img src="./_files/i_lo2.gif" border="0"></a> -->
+			</div>
+		</div>
+
+		<!-- <div id="dialog" class="dialog">
+			<div class="dialog-overlay"></div>
+			<div class="dialog-content">
+				<div class="morph-shape">
+					<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 560 280" preserveAspectRatio="none">
+						<rect x="3" y="3" fill="none" width="556" height="276"></rect>
+					</svg>
+				</div>
+				<div class="dialog-inner">
+					<h2>提交成功</h2>
+					<div><button class="action" data-dialog-close="">关闭</button></div>
+				</div>
+			</div>
+		</div> -->
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/index.js"></script>
+		<script src="js/nav.js"></script>
 	</body>
 </html>

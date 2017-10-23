@@ -57,7 +57,7 @@ $(window).ready(function(){
 	$('.f_contact .ph').hover(null,p_hide);
 	$('#aboutm').css('left',$('#nabout').offset().left - 13);
 	$('#domainm').css('left',$('#ndomain').offset().left);
-	$('#qrcode').css('left',$('#nqrcode').offset().left - 40);
+	// $('#qrcode').css('left',$('#nqrcode').offset().left - 40);
 });
 
 function p_show()

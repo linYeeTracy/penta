@@ -10,6 +10,9 @@ var db = mysql.createPool({
 
 module.exports = function() {
     var router = express.Router();
+    router.get('/submit_msg', (req, res)=>{
+        
+    })
 
     router.get('/getBanners', (req, res)=>{
         db.query('select * from t_banner', (err, data)=>{

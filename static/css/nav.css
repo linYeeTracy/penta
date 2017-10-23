@@ -8,22 +8,35 @@
   z-index: 99;
   border-bottom: 1px solid #dddddd; }
   .nav .nav_c {
-    width: 100%;
     height: 100%;
+    padding: 0 50px;
     position: relative; }
-  .nav .menu {
-    width: 100%;
-    max-width: 1200px; }
-    .nav .menu .logo {
+    .nav .nav_c .logo-wrap {
       float: left;
-      margin: 15px 0 0 40px;
-      height: 22px; }
+      height: 100%;
+      line-height: 100%; }
+      .nav .nav_c .logo-wrap .logo {
+        margin: 15px 10px 0 40px;
+        height: 22px; }
+      .nav .nav_c .logo-wrap .company-name {
+        display: inline-block;
+        font-size: 20px;
+        color: #a0a0a0;
+        vertical-align: 18px; }
+  .nav .menu {
+    float: right; }
   .nav a.menu_item {
     padding: 31px 20px 20px 20px;
     font-size: 14px;
     position: relative;
     transition: color,border,top 0.5s;
     position: relative; }
+    .nav a.menu_item.current {
+      color: #27ae61;
+      top: -3px; }
+      .nav a.menu_item.current span {
+        opacity: 1;
+        bottom: 10px; }
     .nav a.menu_item span {
       border-bottom: 2px solid #27ae61;
       position: absolute;
@@ -87,7 +100,7 @@
 .f_contact {
   position: fixed;
   right: 0;
-  top: 40%;
+  top: 30%;
   width: 50px;
   height: 120px;
   z-index: 999;

@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js canvas - lines - sphere</title>
+		<title>南京慧道通物联网有限公司</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<style>
-		</style>
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/home.css">
+        
 	</head>
 	<body>
-
-		<script src="js/libs/three.js"></script>
-
+        <div class="home">
+            <div class="home-cont">
+                <h1>
+                    <!-- <img src="img/smartroadiot.jpg" class="img-logo">  -->
+                    <p class="en-name">smartroadiot</p>
+                </h1> 
+                <div class="list">
+                    <a href="/home.html" class="">首页</a> 
+                    <a href="/home.html#product_display" class="">产品展示</a> 
+                    <a href="/home.html#about_us" class="">关于我们</a> 
+                    <a href="/join_us.html" class="">联系我们</a> 
+                </div>
+            </div>
+        </div>
+        <div class="home-animate">
+		</div>
+		
+        <script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/libs/three.js"></script> 
 		<script src="js/libs/Projector.js"></script>
 		<script src="js/libs/CanvasRenderer.js"></script>
+		<script src="js/libs/stats.min.js"></script>
 
-		<script>
+        <script>
 			var SCREEN_WIDTH = window.innerWidth,
 			SCREEN_HEIGHT = window.innerHeight,
 			mouseX = 0, mouseY = 0,
@@ -29,20 +47,20 @@
 			function init() {
 				var container, separation = 100, amountX = 50, amountY = 50,
 				particles, particle;
-				container = document.createElement('div');
-				document.body.appendChild(container);
+				container = $('.home-animate')[0];
+				// document.body.appendChild(container);
 				camera = new THREE.PerspectiveCamera( 75, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
 				camera.position.z = 1000;
 				scene = new THREE.Scene();
 				renderer = new THREE.CanvasRenderer();
 				renderer.setPixelRatio( window.devicePixelRatio );
                 renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
-                renderer.setClearColor(0x4584b4);
+                // renderer.setClearColor(0x2d4366);
 				container.appendChild( renderer.domElement );
 				// particles
 				var PI2 = Math.PI * 2;
 				var material = new THREE.SpriteCanvasMaterial( {
-					color: 0xffffff,
+					color: 0xe45769,
 					program: function ( context ) {
 						context.beginPath();
 						context.arc( 0, 0, 0.5, 0, PI2, true );
@@ -69,7 +87,7 @@
 					var vertex2 = vertex.clone();
 					vertex2.multiplyScalar( Math.random() * 0.3 + 1 );
 					geometry.vertices.push( vertex2 );
-					var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0x354243, opacity: Math.random() } ) );
+					var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0xe45769, opacity: Math.random() } ) );
 					scene.add( line );
 				}
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
@@ -115,6 +133,10 @@
 				camera.lookAt( scene.position );
 				renderer.render( scene, camera );
 			}
-		</script>
+
+		
+
+		
+        </script>
 	</body>
 </html>

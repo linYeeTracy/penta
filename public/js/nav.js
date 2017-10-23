@@ -53,6 +53,7 @@ $(window).ready(function(){
 		$('.nav .productmenu').animate({height:'0'},500,function(){
 		}).css('border-bottom','none');
 	});
+
 	$('.f_contact #ph').hover(p_show,null);
 	$('.f_contact .ph').hover(null,p_hide);
 	$('#aboutm').css('left',$('#nabout').offset().left - 13);
