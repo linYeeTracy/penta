@@ -16,18 +16,18 @@
 		position: relative;
 		.logo-wrap {
 			float: left;
-			height: 100%;
-			line-height: 100%;
-			.logo {
-				margin: 15px 10px 0 40px;
-				height: 22px;
+			height: 80px;
+			line-height: 80px;
+			.icon {
+				font-size: 40px;
+				color: #2c2c2c;
 			}
 			.company-name {
 				// float: left;
 				display: inline-block;
-				font-size: 20px;
-				color: #a0a0a0;
-				vertical-align: 18px;
+				font-size: 28px;
+				color: #4b4b4b;
+				vertical-align: 5px;
 			}
 		}
 	}

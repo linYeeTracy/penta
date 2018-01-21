@@ -15,14 +15,18 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
+    .icon-youzi {
+        color: #d81e06;
+        font-size: 200px;
+    }
     // display: flex;
     .home-cont {
         position: relative;
         z-index: 2;
         color: #dcd9d9;
-        top: 40%;
+        top: 22%;
         .en-name {
-            font-size: 74px;
+            font-size: 20px;
             margin-bottom: 10px;
         }
         .ch-name {

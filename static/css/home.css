@@ -12,13 +12,16 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden; }
+  .home .icon-youzi {
+    color: #d81e06;
+    font-size: 200px; }
   .home .home-cont {
     position: relative;
     z-index: 2;
     color: #dcd9d9;
-    top: 40%; }
+    top: 22%; }
     .home .home-cont .en-name {
-      font-size: 74px;
+      font-size: 20px;
       margin-bottom: 10px; }
     .home .home-cont .ch-name {
       font-size: 20px;

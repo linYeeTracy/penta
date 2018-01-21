@@ -12,3 +12,6 @@ img {
 /*.nav .menu .search_b{margin:33px;float:right;cursor:pointer;}*/
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: #ccc; }
+
+.content {
+  color: #4b4b4b; }

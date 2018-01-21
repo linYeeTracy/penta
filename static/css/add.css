@@ -12,15 +12,15 @@
   clear: both;
   float: left; }
   .layoutlist li {
-    float: left;
-    width: 33.3%;
     position: relative;
-    list-style: none; }
+    list-style: none;
+  }
     .layoutlist li a {
       display: block; }
       .layoutlist li a .pic {
         display: block; }
         .layoutlist li a .pic img {
+          width: 100%;
           display: block; }
       .layoutlist li a .txt {
         position: absolute;
@@ -359,6 +359,8 @@
     -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
     border-bottom: 2px solid #282828; }
+  .nav.white:hover .logo-wrap .company-name, .nav.white:hover .logo-wrap .icon {
+    color: #fff; }
 
 .company {
   position: relative;

@@ -13,16 +13,16 @@
     position: relative; }
     .nav .nav_c .logo-wrap {
       float: left;
-      height: 100%;
-      line-height: 100%; }
-      .nav .nav_c .logo-wrap .logo {
-        margin: 15px 10px 0 40px;
-        height: 22px; }
+      height: 80px;
+      line-height: 80px; }
+      .nav .nav_c .logo-wrap .icon {
+        font-size: 40px;
+        color: #2c2c2c; }
       .nav .nav_c .logo-wrap .company-name {
         display: inline-block;
-        font-size: 20px;
-        color: #a0a0a0;
-        vertical-align: 18px; }
+        font-size: 28px;
+        color: #4b4b4b;
+        vertical-align: 5px; }
   .nav .menu {
     float: right; }
   .nav a.menu_item {
