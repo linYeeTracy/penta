@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>南京弧光科技有限公司</title>
-		<meta charset="utf-8">
-		<meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″>
-        <link rel="stylesheet" href="css/common.css">
-		<link rel="stylesheet" href="css/home.css">
-		<link rel="stylesheet" type="text/css" href="css/iconfont.css">
-        
-	</head>
-	<body>
-        <div class="home">
-            <div class="home-cont">
-                <h1>
-                    <i class="icon iconfont icon-youzi"></i>	 
-                    <!-- <p class="en-name">polemo</p> -->
-                </h1> 
-                <div class="list">
-                    <a href="/home.html" class="">首页</a> 
-                    <a href="/home.html#product_display" class="">产品展示</a> 
-                    <a href="/home.html#about_us" class="">关于我们</a> 
-                    <a href="/join_us.html" class="">联系我们</a> 
-                </div>
-            </div>
-        </div>
-        <div class="home-animate">
-		</div>
-		
-        <script src="js/jquery-3.2.1.min.js"></script>
-		<script src="js/libs/three.js"></script> 
-		<script src="js/libs/Projector.js"></script>
-		<script src="js/libs/CanvasRenderer.js"></script>
-		<script src="js/libs/stats.min.js"></script>
 
-        <script>
-			var SCREEN_WIDTH = window.innerWidth,
+<head>
+	<title>南京弧光科技有限公司</title>
+	<meta charset="utf-8">
+	<meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/home.css">
+	<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+
+</head>
+
+<body>
+	<div class="home">
+		<div class="home-cont">
+			<h1>
+
+				<p style="margin-bottom: 20px;font-size: 68px;text-shadow: 0px 3px 9px #3c3d5d;color: rgba(248,248,255, 0.9);font-family: '微软雅黑'">南京弧光网络科技有限公司</p>
+				<i class="icon iconfont icon-arc"></i>
+				<!-- <p class="en-name">polemo</p> -->
+			</h1>
+			<div class="list">
+				<a href="/home.html" class="">首页</a>
+				<a href="/home.html#product_display" class="">产品展示</a>
+				<a href="/home.html#about_us" class="">关于我们</a>
+				<a href="/join_us.html" class="">联系我们</a>
+			</div>
+		</div>
+	</div>
+	<div class="home-animate">
+	</div>
+
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/libs/three.js"></script>
+	<script src="js/libs/Projector.js"></script>
+	<script src="js/libs/CanvasRenderer.js"></script>
+	<script src="js/libs/stats.min.js"></script>
+
+	<script>
+		var SCREEN_WIDTH = window.innerWidth,
 			SCREEN_HEIGHT = window.innerHeight,
 			mouseX = 0, mouseY = 0,
 			windowHalfX = window.innerWidth / 2,
@@ -43,101 +47,102 @@
 			AMOUNTX = 10,
 			AMOUNTY = 10,
 			camera, scene, renderer;
-			init();
-			animate();
-			function init() {
-				var container, separation = 100, amountX = 50, amountY = 50,
+		init();
+		animate();
+		function init() {
+			var container, separation = 100, amountX = 50, amountY = 50,
 				particles, particle;
-				container = $('.home-animate')[0];
-				// document.body.appendChild(container);
-				camera = new THREE.PerspectiveCamera( 75, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
-				camera.position.z = 1000;
-				scene = new THREE.Scene();
-				renderer = new THREE.CanvasRenderer();
-				renderer.setPixelRatio( window.devicePixelRatio );
-                renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
-                // renderer.setClearColor(0x2d4366);
-				container.appendChild( renderer.domElement );
-				// particles
-				var PI2 = Math.PI * 2;
-				var material = new THREE.SpriteCanvasMaterial( {
-					color: 0xe45769,
-					program: function ( context ) {
-						context.beginPath();
-						context.arc( 0, 0, 0.5, 0, PI2, true );
-						context.fill();
-					}
-				} );
-				for ( var i = 0; i < 1000; i ++ ) {
-					particle = new THREE.Sprite( material );
-					particle.position.x = Math.random() * 2 - 1;
-					particle.position.y = Math.random() * 2 - 1;
-					particle.position.z = Math.random() * 2 - 1;
-					particle.position.normalize();
-					particle.position.multiplyScalar( Math.random() * 10 + 450 );
-					particle.scale.multiplyScalar( 2 );
-					scene.add( particle );
+			container = $('.home-animate')[0];
+			// document.body.appendChild(container);
+			camera = new THREE.PerspectiveCamera(75, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000);
+			camera.position.z = 1000;
+			scene = new THREE.Scene();
+			renderer = new THREE.CanvasRenderer();
+			renderer.setPixelRatio(window.devicePixelRatio);
+			renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+			// renderer.setClearColor(0x2d4366);
+			container.appendChild(renderer.domElement);
+			// particles
+			var PI2 = Math.PI * 2;
+			var material = new THREE.SpriteCanvasMaterial({
+				color: 0xe45769,
+				program: function (context) {
+					context.beginPath();
+					context.arc(0, 0, 0.5, 0, PI2, true);
+					context.fill();
 				}
-				// lines
-				for (var i = 0; i < 300; i++) {
-					var geometry = new THREE.Geometry();
-					var vertex = new THREE.Vector3( Math.random() * 2 - 1, Math.random() * 2 - 1, Math.random() * 2 - 1 );
-					vertex.normalize();
-					vertex.multiplyScalar( 450 );
-					geometry.vertices.push( vertex );
-					var vertex2 = vertex.clone();
-					vertex2.multiplyScalar( Math.random() * 0.3 + 1 );
-					geometry.vertices.push( vertex2 );
-					var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0xe45769, opacity: Math.random() } ) );
-					scene.add( line );
-				}
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
-				//
-				window.addEventListener( 'resize', onWindowResize, false );
+			});
+			for (var i = 0; i < 1000; i++) {
+				particle = new THREE.Sprite(material);
+				particle.position.x = Math.random() * 2 - 1;
+				particle.position.y = Math.random() * 2 - 1;
+				particle.position.z = Math.random() * 2 - 1;
+				particle.position.normalize();
+				particle.position.multiplyScalar(Math.random() * 10 + 450);
+				particle.scale.multiplyScalar(2);
+				scene.add(particle);
 			}
-			function onWindowResize() {
-				windowHalfX = window.innerWidth / 2;
-				windowHalfY = window.innerHeight / 2;
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-				renderer.setSize( window.innerWidth, window.innerHeight );
+			// lines
+			for (var i = 0; i < 300; i++) {
+				var geometry = new THREE.Geometry();
+				var vertex = new THREE.Vector3(Math.random() * 2 - 1, Math.random() * 2 - 1, Math.random() * 2 - 1);
+				vertex.normalize();
+				vertex.multiplyScalar(450);
+				geometry.vertices.push(vertex);
+				var vertex2 = vertex.clone();
+				vertex2.multiplyScalar(Math.random() * 0.3 + 1);
+				geometry.vertices.push(vertex2);
+				var line = new THREE.Line(geometry, new THREE.LineBasicMaterial({ color: 0xe45769, opacity: Math.random() }));
+				scene.add(line);
 			}
+			document.addEventListener('mousemove', onDocumentMouseMove, false);
+			document.addEventListener('touchstart', onDocumentTouchStart, false);
+			document.addEventListener('touchmove', onDocumentTouchMove, false);
 			//
-			function onDocumentMouseMove(event) {
-				mouseX = event.clientX - windowHalfX;
-				mouseY = event.clientY - windowHalfY;
+			window.addEventListener('resize', onWindowResize, false);
+		}
+		function onWindowResize() {
+			windowHalfX = window.innerWidth / 2;
+			windowHalfY = window.innerHeight / 2;
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+		}
+		//
+		function onDocumentMouseMove(event) {
+			mouseX = event.clientX - windowHalfX;
+			mouseY = event.clientY - windowHalfY;
+		}
+		function onDocumentTouchStart(event) {
+			if (event.touches.length > 1) {
+				event.preventDefault();
+				mouseX = event.touches[0].pageX - windowHalfX;
+				mouseY = event.touches[0].pageY - windowHalfY;
 			}
-			function onDocumentTouchStart( event ) {
-				if ( event.touches.length > 1 ) {
-					event.preventDefault();
-					mouseX = event.touches[ 0 ].pageX - windowHalfX;
-					mouseY = event.touches[ 0 ].pageY - windowHalfY;
-				}
+		}
+		function onDocumentTouchMove(event) {
+			if (event.touches.length == 1) {
+				event.preventDefault();
+				mouseX = event.touches[0].pageX - windowHalfX;
+				mouseY = event.touches[0].pageY - windowHalfY;
 			}
-			function onDocumentTouchMove( event ) {
-				if ( event.touches.length == 1 ) {
-					event.preventDefault();
-					mouseX = event.touches[ 0 ].pageX - windowHalfX;
-					mouseY = event.touches[ 0 ].pageY - windowHalfY;
-				}
-			}
-			//
-			function animate() {
-				requestAnimationFrame( animate );
-				render();
-			}
-			function render() {
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
-				camera.lookAt( scene.position );
-				renderer.render( scene, camera );
-			}
+		}
+		//
+		function animate() {
+			requestAnimationFrame(animate);
+			render();
+		}
+		function render() {
+			camera.position.x += (mouseX - camera.position.x) * .05;
+			camera.position.y += (- mouseY + 200 - camera.position.y) * .05;
+			camera.lookAt(scene.position);
+			renderer.render(scene, camera);
+		}
 
-		
 
-		
-        </script>
-	</body>
+
+
+	</script>
+</body>
+
 </html>

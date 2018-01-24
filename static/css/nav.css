@@ -21,15 +21,15 @@
       .nav .nav_c .logo-wrap .company-name {
         display: inline-block;
         font-size: 28px;
-        color: #4b4b4b;
-        vertical-align: 5px; }
+        color: #8dc651;
+        vertical-align: -5px; }
   .nav .menu {
     float: right; }
   .nav a.menu_item {
     padding: 31px 20px 20px 20px;
     font-size: 14px;
     position: relative;
-    transition: color,border,top 0.5s;
+    transition: color, border, top 0.5s;
     position: relative; }
     .nav a.menu_item.current {
       color: #27ae61;

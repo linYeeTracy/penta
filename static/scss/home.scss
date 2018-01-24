@@ -1,91 +1,98 @@
 html {
-    font-family: sans-serif;
-    line-height: 1.15;
+  font-family: sans-serif;
+  line-height: 1.15;
 }
 
 .home {
-    width: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  // background-color: #141a48;
+  // background-image: url(../img/home_bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  .icon-arc {
+    display: inline-block;
+    width: 128px;
+    height: 128px;
+    margin: 0 auto;
+    background: url("../img/arc_logo.png");
+  }
+  // display: flex;
+  .home-cont {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    text-align: center;
-    // background-color: #141a48;
-    // background-image: url(../img/home_bg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-    .icon-youzi {
-        color: #d81e06;
-        font-size: 200px;
+    z-index: 2;
+    color: #dcd9d9;
+    top: 50%;
+    left: 50%;
+    margin-left: -408px;
+    margin-top: -135px;
+    .en-name {
+      font-size: 20px;
+      margin-bottom: 10px;
     }
-    // display: flex;
-    .home-cont {
+    .ch-name {
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
+    // .business {
+    //     font-size: 16px;
+    // }
+    .list {
+      margin: 0 0 200px;
+      a {
+        color: rgba(248, 248, 255, 0.9);
+        font-size: 16px;
+        display: inline-block;
+        padding: 10px;
         position: relative;
-        z-index: 2;
-        color: #dcd9d9;
-        top: 22%;
-        .en-name {
-            font-size: 20px;
-            margin-bottom: 10px;
+        transition: color 0.3s;
+        &:before,
+        &:after {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: #fff;
+          content: "";
+          opacity: 0;
+          transition: opacity 0.3s, -webkit-transform 0.3s;
+          transition: opacity 0.3s, transform 0.3s;
+          -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
         }
-        .ch-name {
-            font-size: 20px;
-            margin-bottom: 40px;
+        &:before {
+          top: 0;
+          -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
         }
-        // .business {
-        //     font-size: 16px;
-        // }
-        .list {
-            margin: 40px 0 200px;
-            a {
-                color: #e0ddde;
-                font-size: 16px;
-                display: inline-block;
-                padding: 10px;
-                position: relative;
-                transition: color .3s;
-                &:before, &:after {
-                    position: absolute;
-                    left: 0;
-                    width: 100%;
-                    height: 2px;
-                    background: #fff;
-                    content: "";
-                    opacity: 0;
-                    transition: opacity .3s,-webkit-transform .3s;
-                    transition: opacity .3s,transform .3s;
-                    -webkit-transform: translateY(-10px);
-                    transform: translateY(-10px);
-
-                }
-                &:before {
-                    top: 0;
-                    -webkit-transform: translateY(-10px);
-                    transform: translateY(-10px);
-                }
-                &:after {
-                    bottom: 0;
-                    -webkit-transform: translateY(10px);
-                    transform: translateY(10px);
-                }
-                &:hover {
-                    color: #fff;
-                    &:before,&:after {
-                        opacity: 1;
-                        -webkit-transform: translateY(0);
-                        transform: translateY(0);
-                    }
-                    // &
-                }
-            }
+        &:after {
+          bottom: 0;
+          -webkit-transform: translateY(10px);
+          transform: translateY(10px);
         }
+        &:hover {
+          color: #fff;
+          &:before,
+          &:after {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+          }
+          // &
+        }
+      }
     }
+  }
 }
 .home-animate {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    bottom: 0;
-    overflow: hidden;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
 }
